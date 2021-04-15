@@ -1,4 +1,5 @@
 {
+    "token":"your bot token"
     "prefix":">",
     "api-key":"f0ee520e486c985afdb0e8efab825262d7a6619c",
     "news-channel":831602165679915008,
