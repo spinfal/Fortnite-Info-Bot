@@ -18,3 +18,4 @@ If you're going to use this code, please give credit **don't just steal**
 - https://fortnite-api.com/
 - https://benbotfn.tk/
 - https://api.peely.de/
+- http://www.fortniteapi.net/
