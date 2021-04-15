@@ -135,6 +135,31 @@ async def autofltoken():
                 json.dump(status, file, indent=3)
 
 @tasks.loop(seconds=30)
+async def autobg():
+    with open('Saves/bg.json', 'r') as file:
+        old = json.load(file)
+    async with aiohttp.ClientSession() as session:
+        async with session.get("http://www.fortniteapi.net/v1/game/backgrounds") as statuss:
+            status = await statuss.json() 
+            if status != old:
+                async with session.get("http://www.fortniteapi.net/v1/game/backgrounds") as response:
+                    response = await response.json()
+                    embed=discord.Embed(
+                        title="Fortnite Dynamic Backgrounds Updated", 
+                        color=0xff0a0a
+                    )
+                    channel = bot.get_channel(config["build-channel"])
+                    embed.add_field(name=f"Stage", value=f"{response['backgrounds'][0]['stage']}", inline=False)
+                    embed.add_field(name="Type", value=f"{response['backgrounds'][0]['_type']}", inline=False)
+                    embed.add_field(name="Key", value=f"{response['backgrounds'][0]['key']}", inline=False)
+                    embed.add_field(name=f"Stage", value=f"{response['backgrounds'][1]['stage']}", inline=False)
+                    embed.add_field(name="Type", value=f"{response['backgrounds'][1]['_type']}", inline=False)
+                    embed.add_field(name="Key", value=f"{response['backgrounds'][1]['key']}", inline=False)
+                    await channel.send(embed=embed)
+            with open('Saves/bg.json', 'w') as file:
+                json.dump(status, file, indent=3)
+
+@tasks.loop(seconds=30)
 async def autobrshop():
     with open('Saves/shop.json', 'r') as file:
         old = json.load(file)
@@ -169,6 +194,7 @@ async def on_ready():
     autobuild.start()
     autobrshop.start()
     autofltoken.start()
+    autobg.start()
 
 @bot.command()
 async def stats(ctx, arg):
