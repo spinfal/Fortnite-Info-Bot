@@ -1,0 +1,15 @@
+{
+   "status": 200,
+   "backgrounds": [
+      {
+         "stage": "season16",
+         "_type": "DynamicBackground",
+         "key": "lobby"
+      },
+      {
+         "stage": "default",
+         "_type": "DynamicBackground",
+         "key": "vault"
+      }
+   ]
+}
