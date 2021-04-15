@@ -114,6 +114,28 @@ async def autobuild():
                 json.dump(status, file, indent=3)
 
 @tasks.loop(seconds=30)
+async def autofltoken():
+    with open('Saves/fltoken.json', 'r') as file:
+        old = json.load(file)
+    async with aiohttp.ClientSession() as session:
+        async with session.get("https://api.nitestats.com/v1/epic/builds/fltoken") as statuss:
+            status = await statuss.json() 
+            if status != old:
+                await bot.change_presence(activity=discord.Game(name=f"{status['version']}"))
+                async with session.get("https://api.nitestats.com/v1/epic/builds/fltoken") as response:
+                    response = await response.json()
+                    embed=discord.Embed(
+                        title="Fortnite FLToken Updated", 
+                        color=0xff0a0a
+                    )
+                    channel = bot.get_channel(config["build-channel"])
+                    embed.add_field(name=f"Build", value=f"{response['version']}", inline=False)
+                    embed.add_field(name="FLToken", value=f"{response['fltoken']}", inline=False)
+                    await channel.send(embed=embed)
+            with open('Saves/fltoken.json', 'w') as file:
+                json.dump(status, file, indent=3)
+
+@tasks.loop(seconds=30)
 async def autobrshop():
     with open('Saves/shop.json', 'r') as file:
         old = json.load(file)
@@ -147,6 +169,7 @@ async def on_ready():
     taskbrnews.start()
     autobuild.start()
     autobrshop.start()
+    autofltoken.start()
 
 @bot.command()
 async def stats(ctx, arg):
