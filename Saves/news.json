@@ -1,0 +1,53 @@
+{
+   "status": 200,
+   "data": {
+      "hash": "7499bd7f7eb0e2f83e21491855210f491cdf0451",
+      "date": "2021-04-13T23:59:41Z",
+      "image": "https://cdn.fortnite-api.com/news/v2/7499bd7f7eb0e2f83e21491855210f491cdf0451.gif",
+      "motds": [
+         {
+            "id": "e50a29ab-129f-4f58-b63b-3d735e49bea8",
+            "title": "Aloy Coming Soon",
+            "tabTitle": null,
+            "body": "Catch Aloy in the Item Shop on April 15 and play in the Team Up! Aloy & Lara LTM starting on April 16!",
+            "image": "https://cdn-live.prm.ol.epicgames.com/prod/BR_Aloy_Screenshot_M-effceac5-fc0e-4d50-8261-503cab4ab83e.jpeg?width=1920",
+            "tileImage": "https://cdn-live.prm.ol.epicgames.com/prod/BR_Aloy_Screenshot_M-ded6efe5-5468-482c-9617-2935271cda90.jpeg?width=1024",
+            "sortingPriority": 100,
+            "hidden": false
+         },
+         {
+            "id": "0b62ef36-fca1-4660-85b7-c371f3d3f020",
+            "title": "Leleo's Locker",
+            "tabTitle": "New Locker Bundle",
+            "body": "Gear up with Leleo's hand-picked Locker Bundle to take a bit of charm on the long road to victory!",
+            "image": "https://cdn-live.prm.ol.epicgames.com/prod/BR_LeleoLockerBundle-04c1b57b-7e3f-4ee8-822c-68556aa1b7c9.jpeg?width=1920",
+            "tileImage": "https://cdn-live.prm.ol.epicgames.com/prod/BR_LeleoLockerBundle-3e23d38f-78a4-404e-90d0-19e1953623ed.jpeg?width=1024",
+            "sortingPriority": 90,
+            "hidden": false
+         },
+         {
+            "id": "592a878b-dea5-4b00-8658-1280b6428966",
+            "title": "Chonkers Off-Road Tires",
+            "tabTitle": null,
+            "body": "Boost up your ride for the ultimate off-road rumble!",
+            "image": "https://cdn-live.prm.ol.epicgames.com/prod/BR_Chonkers_MOTD_xjp-1c5adf52-655e-415f-a7c4-810d42bbc00d.jpeg?width=1920",
+            "tileImage": "https://cdn-live.prm.ol.epicgames.com/prod/BR_Chonkers_MOTD_xjp-54133ebd-4e69-4604-844e-976eb4e69ef3.jpeg?width=1024",
+            "sortingPriority": 80,
+            "hidden": false,
+            "videoString": "ChonkersTires",
+            "videoId": "vGZdvemJPJPxxOEmyN"
+         },
+         {
+            "id": "871d281c-3330-46b4-8a35-095205054bc2",
+            "title": "Joyride in Creative",
+            "tabTitle": null,
+            "body": "Buckle up and start your engines, Joyride vehicles and the new Race Checkpoint Device are now in Creative!",
+            "image": "https://cdn-live.prm.ol.epicgames.com/prod/EN_BR_Social_JoyRide-76039d5b-e181-4d10-a064-bc2ecaacdb53.jpeg?width=1920",
+            "tileImage": "https://cdn-live.prm.ol.epicgames.com/prod/EN_BR_Social_JoyRide-af88652d-e7fa-4cb4-b863-d6265c683fab.jpeg?width=1024",
+            "sortingPriority": 70,
+            "hidden": false
+         }
+      ],
+      "messages": null
+   }
+}
