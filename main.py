@@ -1,4 +1,4 @@
-import requests, json, discord, datetime, asyncio, aiohttp, os
+import requests, json, discord, datetime, asyncio, aiohttp
 from discord.ext import commands
 from discord.ext import tasks
 from discord.utils import get
@@ -241,4 +241,4 @@ async def brshop(ctx, aliases=['shop', 'itemshop']):
     )
     await ctx.send(embed=embed)
 
-bot.run(os.environ['TOKEN'], reconnect=True)
+bot.run(config["token"], reconnect=True)
