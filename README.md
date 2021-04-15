@@ -1,5 +1,6 @@
 # Info
 **Modified by me, aka Spin. I am currently maintaining this to the best of my ability.**
+## __**THIS WAS ORIGINALLY MADE BY [ignBane](https://github.com/ignBane)**__ <3
 
 # Lynx
 Fortnite Info Discord Bot.
