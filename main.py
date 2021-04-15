@@ -121,7 +121,6 @@ async def autofltoken():
         async with session.get("https://api.nitestats.com/v1/epic/builds/fltoken") as statuss:
             status = await statuss.json() 
             if status != old:
-                await bot.change_presence(activity=discord.Game(name=f"{status['version']}"))
                 async with session.get("https://api.nitestats.com/v1/epic/builds/fltoken") as response:
                     response = await response.json()
                     embed=discord.Embed(
