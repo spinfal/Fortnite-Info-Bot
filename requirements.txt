@@ -1,0 +1,5 @@
+requests
+discord
+asyncio
+aiohttp
+os
