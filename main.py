@@ -102,14 +102,20 @@ async def autobuild():
                 await bot.change_presence(activity=discord.Game(name=f"{status['currentFortniteVersion']}"))
                 async with session.get("https://benbotfn.tk/api/v1/aes") as response:
                     response = await response.json()
+                    with open('Saves/build.json', 'r') as file:
+                      newBuild = json.load(file)
                     embed=discord.Embed(
                         title="Fortnite Static Key Update Detected", 
                         color=0xff0a0a
                     )
                     channel = bot.get_channel(config["build-channel"])
-                    embed.add_field(name=f"Build", value=f"{response['version']}", inline=False)
-                    embed.add_field(name="AES", value=f"{response['mainKey']}", inline=False)
+                    embed.add_field(name=f"Build", value=f"{response['version']}",  inline=False)
+                    embed.add_field(name=f"CDN", value=f"{newBuild['currentCdnVersion']}",  inline=False)
+                    embed.add_field(name="AES", value=f"{response['mainKey']}",   inline=False)
+                    embed.add_field(name="Total PAK Count", value=f"{newBuild['totalPakCount']}",   inline=False)
+                    embed.add_field(name="Dynamic PAK Count", value=f"{newBuild['dynamicPakCount']}",   inline=False)
                     await channel.send(embed=embed)
+                    file.close()
             with open('Saves/build.json', 'w') as file:
                 json.dump(status, file, indent=3)
 
