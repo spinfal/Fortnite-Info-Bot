@@ -168,17 +168,14 @@ async def autobrshop():
             async with session.get("https://api.peely.de/v1/shop") as r:
                 response = await r.json()
                 if response != old:
-                    with open('Saves/shop.json', 'w') as file:
-                        json.dump(response, file, indent=3)
-                        file.close()
-                    with open('Saves/shop.json', 'r') as file:
-                        new = json.load(file)
                     channel = bot.get_channel(config['shop-channel'])
                     embed=discord.Embed(
-                        title='Br Shop - ' + new['time'],
+                        title='Br News',
                     )
-                    embed.set_image(url=new['url'])
-                    await channel.send(content=new['url']) # discord caches images in embed ig so no embeds boooo
+                    embed.set_image(url=response['uniqueurl'])
+                    await channel.send(embed=embed)
+                with open('Saves/shop.json', 'w') as file:
+                      json.dump(response, file, indent=3)
     except Exception as e:
       print("ERROR! Woah that wasn't supposed to happen " + str(e))
       pass
