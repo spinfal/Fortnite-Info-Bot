@@ -11,7 +11,8 @@ If you're going to use this code, please give credit **don't just steal**
 # Features
 - Auto Br/Stw/Creative News | Sends the new live news as a gif everytime it changes.
 - Auto Build | Sends the new fortnite build as soon as its out.
-- Auto Br~~/Stw/Creative~~ Shop | Sends the new fortnite BR item shop as soon as it changes.
+- Auto Br Shop | Sends the new fortnite BR item shop as soon as it changes.
+  - Maybe Creative/Stw
 - FLToken, AES, and Bearer command
 - Player stats
 - Cosmetic search and information
