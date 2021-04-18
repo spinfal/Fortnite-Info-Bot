@@ -9,9 +9,12 @@ Fortnite Info Discord Bot.
 If you're going to use this code, please give credit **don't just steal**
 
 # Features
-- Auto News | Sends the new live news as a gif everytime it changes.
+- Auto Br/Stw/Creative News | Sends the new live news as a gif everytime it changes.
 - Auto Build | Sends the new fortnite build as soon as its out.
-- Auto Shop | Sends the new fortnite BR item shop as soon as it changes.
+- Auto Br/Stw/Creative Shop | Sends the new fortnite BR item shop as soon as it changes.
+- FLToken, AES, and Bearer command
+- Player stats
+- Cosmetic search and information
 
 # Used API'S
 
