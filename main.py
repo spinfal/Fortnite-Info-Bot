@@ -57,39 +57,66 @@ async def fltoken(ctx):
 
 @tasks.loop(seconds=30)
 async def taskbrnews():
-    with open('Saves/news.json', 'r') as file:
+    with open('Saves/brnews.json', 'r') as file:
         old = json.load(file)
     try:
-      if apikey == True:
-          async with aiohttp.ClientSession() as session:
-              async with session.get("https://fortnite-api.com/v2/news/br", headers={"Authorization":config["api-key"]}) as r:
-                  response = await r.json()
-                  if response != old:
-                      channel = bot.get_channel(config['news-channel'])
-                      embed=discord.Embed(
-                          title='Br News',
-                      )
-                      embed.set_image(url=response['data']['image'])
-                      await channel.send(embed=embed)
-                  with open('Saves/news.json', 'w') as file:
-                      json.dump(response, file, indent=3)
-      else:
-          async with aiohttp.ClientSession() as session:
-              async with session.get("https://fortnite-api.com/v2/news/br") as r:
-                  response = await r.json()
-                  if response != old:
-                      channel = bot.get_channel(config['news-channel'])
-                      embed=discord.Embed(
-                          title='Br News',
-                      )
-                      embed.set_image(url=response['data']['image'])
-                      await channel.send(embed=embed)
-                  with open('Saves/news.json', 'w') as file:
-                      json.dump(response, file, indent=3)
+      async with aiohttp.ClientSession() as session:
+        async with session.get("https://api.peely.de/v1/br/news") as r:
+          response = await r.json()
+          if response != old:
+            channel = bot.get_channel(config['brnews-channel'])
+            embed=discord.Embed(
+              title='Br News',
+            )
+            embed.set_image(url=response['data']['image'])
+            await channel.send(embed=embed)
+          with open('Saves/brnews.json', 'w') as file:
+            json.dump(response, file, indent=3)
     except Exception as e:
       print("ERROR! Woah that wasn't supposed to happen " + e)
       pass
 
+@tasks.loop(seconds=30)
+async def taskcrnews():
+    with open('Saves/crnews.json', 'r') as file:
+        old = json.load(file)
+    try:
+      async with aiohttp.ClientSession() as session:
+        async with session.get("https://api.peely.de/v1/creative/news") as r:
+          response = await r.json()
+          if response != old:
+            channel = bot.get_channel(config['crnews-channel'])
+            embed=discord.Embed(
+              title='Creative News',
+            )
+            embed.set_image(url=response['data']['image'])
+            await channel.send(embed=embed)
+          with open('Saves/crnews.json', 'w') as file:
+            json.dump(response, file, indent=3)
+    except Exception as e:
+      print("ERROR! Woah that wasn't supposed to happen " + e)
+      pass
+    
+@tasks.loop(seconds=30)
+async def taskstwnews():
+    with open('Saves/stwnews.json', 'r') as file:
+        old = json.load(file)
+    try:
+      async with aiohttp.ClientSession() as session:
+        async with session.get("https://api.peely.de/v1/stw/news") as r:
+          response = await r.json()
+          if response != old:
+            channel = bot.get_channel(config['stwnews-channel'])
+            embed=discord.Embed(
+              title='Stw News',
+            )
+            embed.set_image(url=response['data']['image'])
+            await channel.send(embed=embed)
+          with open('Saves/stwnews.json', 'w') as file:
+            json.dump(response, file, indent=3)
+    except Exception as e:
+      print("ERROR! Woah that wasn't supposed to happen " + e)
+      pass
 
 @tasks.loop(seconds=30)
 async def autobuild():
@@ -176,7 +203,7 @@ async def autobrshop():
                 if response != old:
                     channel = bot.get_channel(config['shop-channel'])
                     embed=discord.Embed(
-                        title='Br News',
+                        title='Br Shop',
                     )
                     embed.set_image(url=response['uniqueurl'])
                     await channel.send(embed=embed)
@@ -194,6 +221,8 @@ async def on_ready():
     ).json()
     await bot.change_presence(activity=discord.Game(name=f"{status['currentFortniteVersion']}"))
     taskbrnews.start()
+    taskcrnews.start()
+    taskstwnews.start()
     autobuild.start()
     autobrshop.start()
     autofltoken.start()
@@ -247,16 +276,17 @@ async def stwnews(ctx):
     await ctx.send(embed=embed)
 
 @bot.command()
-async def search(ctx, cosnamee):
-  #cosnamee = cosnamee.strip('>search ')
-  r = requests.get(f'https://fortnite-api.com/v2/cosmetics/br/search/all?name={cosnamee}')
+async def search(ctx):
+  #cosname = cosnamee.replace(' ', '+')
+  cosname = ctx.message.content.replace('>search ', '').replace(' ', '+')
+  r = requests.get(f'https://fortnite-api.com/v2/cosmetics/br/search/all?name={cosname}')
   rr = r.json()
   if rr['status'] == 200:
     for sub_dict in rr['data']:
       embed = discord.Embed(color=0x0d95fd)
       embed.add_field(name='Name', value=f"``{sub_dict['name']}``", inline=False)
       embed.add_field(name='ID', value=f"``{sub_dict['id']}``", inline=False)
-      embed.add_field(name='Rarity', value=f"``{sub_dict['description']}``", inline=False)
+      embed.add_field(name='Description', value=f"``{sub_dict['description']}``", inline=False)
       embed.add_field(name='Type', value=f"``{sub_dict['type']['value']}``", inline=False)
       embed.add_field(name='Display Type', value=f"``{sub_dict['type']['displayValue']}``", inline=False)
       embed.add_field(name='Backend Value', value=f"``{sub_dict['type']['backendValue']}``", inline=False)
@@ -290,6 +320,6 @@ async def brshop(ctx, aliases=['shop', 'itemshop']):
     embed.set_image(
         url=response['uniqueurl']
     )
-    await ctx.send(embed=embed)
+    await ctx.send(embed=embed
 
 bot.run(config["token"], reconnect=True)
