@@ -1,8 +1,10 @@
 {
-    "token":"your bot token"
+    "token":"bot token here",
     "prefix":">",
-    "api-key":"f0ee520e486c985afdb0e8efab825262d7a6619c",
-    "news-channel":831602165679915008,
+    "api-key":"Fortnite API Key Here (If Not Leave Default)",
+    "brnews-channel":831602165679915008,
+    "crnews-channel": 833422622510809129 ,
+    "stwnews-channel": 833422697223684106,
     "shop-channel":831603727377891408,
     "tournamnet-channel":831602222101037118,
     "build-channel":831602310839926874,
