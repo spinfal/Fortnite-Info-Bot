@@ -320,6 +320,6 @@ async def brshop(ctx, aliases=['shop', 'itemshop']):
     embed.set_image(
         url=response['uniqueurl']
     )
-    await ctx.send(embed=embed
+    await ctx.send(embed=embed)
 
 bot.run(config["token"], reconnect=True)
