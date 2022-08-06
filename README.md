@@ -1,9 +1,8 @@
 # READ THIS
-This might be out-of-date or some APIs may no longer work/need to be updated! If you wish to help, please open a pull request with any changes/fixes.
-Eventually I will update this.
+This might be out-of-date or some APIs may no longer work/need to be updated! I am no longer maintining this code.
 
 # Info
-**Modified by me, aka Spin. I am currently maintaining this to the best of my ability.**
+**Modified by me, aka Spin.**
 ## __**THIS WAS ORIGINALLY MADE BY [ignBane](https://github.com/ignBane)**__ <3
 
 # Lynx
